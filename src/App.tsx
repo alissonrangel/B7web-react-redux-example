@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-/* Usando sem redux/hooks
+/* Usando sem hook personalizado
 import {useSelector} from 'react-redux';
 import {RootState} from './redux/store';
 */
+
+//hook personalizado para não ter que importar o type RootState
 import {useAppSelector} from './redux/hooks/useAppSelector';
 
 
@@ -37,11 +39,10 @@ const Container = styled.div<{backgroundColor: string, textColor: string}>`
 function App() {
 
   /*
-  Usando sem redux/hooks
+  Usando sem hook personalizado
   const user = useSelector((state: RootState) => state.user)
   */
   const user = useAppSelector( state => state.user);
-
 
   const theme = useAppSelector( state => state.theme);
 
@@ -52,7 +53,6 @@ function App() {
   const changeName = (newName: string) => dispatch(setName(newName));
   const changeAge = (newAge: number) => dispatch(setAge(newAge));
 
-  //const [name, setName2] = useState("");
   const handleNameInputChange = (e: React.ChangeEvent<HTMLInputElement>)=>{ 
     //dispatch(setName(e.target.value)); 
     //or

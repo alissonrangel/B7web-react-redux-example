@@ -11,6 +11,6 @@ npm i -D @types/react-redux
 - store : recomanda-se ter uma store por aplicação - local onde vai armazenar as infos
 - provider : disponibiliza o store em todos que estão dentro da aplicação
 - reducers / slice
-- actions / dispatches
+- actions / dispatches - para alterar informacoes
 - selectors : para pegar as infos que estão na store
 - usar um useSelector para cada um dos reducers
