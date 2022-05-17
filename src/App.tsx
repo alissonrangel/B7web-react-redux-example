@@ -13,26 +13,26 @@ import {useAppSelector} from './redux/hooks/useAppSelector';
 
 import {useDispatch} from 'react-redux';
 import { setName, setAge} from './redux/reducers/userReducer';
-import {setThemeStatus, setTextColor, setBackColor} from './redux/reducers/themeReducer';
+import {setThemeStatus, setSecondaryColor, setPrimaryColor} from './redux/reducers/themeReducer';
 
 
 import styled from 'styled-components';
 
 
-const Container = styled.div<{backgroundColor: string, textColor: string}>`
-  background-color: ${props=>props.backgroundColor};
-  color: ${props=>props.textColor};
+const Container = styled.div<{primary: string, secondary: string}>`
+  background-color: ${props=>props.primary};
+  color: ${props=>props.secondary};
   height: 100vh;
   input{
-    background-color: ${props=>props.backgroundColor};
-    color: ${props=>props.textColor};
-    border: 1px solid ${props=>props.textColor};
+    background-color: ${props=>props.primary};
+    color: ${props=>props.secondary};
+    border: 1px solid ${props=>props.secondary};
     padding: 10px;;
   }
   button{
-    background-color: ${props=>props.backgroundColor};
-    color: ${props=>props.textColor};
-    border: 1px solid ${props=>props.textColor};
+    background-color: ${props=>props.primary};
+    color: ${props=>props.secondary};
+    border: 1px solid ${props=>props.secondary};
   }
 `
 
@@ -68,13 +68,13 @@ function App() {
 
   const handleSwitchTheme = () => {
     dispatch(setThemeStatus(theme.status === "light" ? "dark":"light"));
-    let themeBack = theme.backgroundColor;
-    dispatch(setBackColor(theme.textColor));
-    dispatch(setTextColor(themeBack));
+    let themeBack = theme.primary;
+    dispatch(setPrimaryColor(theme.secondary));
+    dispatch(setSecondaryColor(themeBack));
   }
 
   return (
-    <Container className="App" backgroundColor={theme.backgroundColor} textColor={theme.textColor} >
+    <Container className="App" primary={theme.primary} secondary={theme.secondary} >
       Meu nome é: {user.name} e tenho {user.age} anos.<br/>
       Tema: {theme.status}
       <hr/>

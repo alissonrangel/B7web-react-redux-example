@@ -4,21 +4,21 @@ const slice = createSlice({
     name: 'theme',
     initialState: {
         status: 'light',
-        backgroundColor: '#eeeeee',
-        textColor: '#333333'
+        primary: '#eeeeee',
+        secondary: '#333333'
     },
     reducers: {
         setThemeStatus: (state, action) => {
             state.status = action.payload;
         },
-        setBackColor: (state, action) => {
-            state.backgroundColor = action.payload;
+        setPrimaryColor: (state, action) => {
+            state.primary = action.payload;
         },
-        setTextColor: (state, action) => {
-            state.textColor = action.payload;
+        setSecondaryColor: (state, action) => {
+            state.secondary = action.payload;
         }
     }
 });
 
-export const { setThemeStatus, setBackColor, setTextColor } = slice.actions;
+export const { setThemeStatus, setPrimaryColor, setSecondaryColor } = slice.actions;
 export default slice.reducer;
